@@ -1,0 +1,7 @@
+#input, #secondi.hidden, #numeri.hidden {
+    display: none;
+}
+
+#input.visible {
+    display: block;
+}
