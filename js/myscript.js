@@ -8,22 +8,28 @@ const inputNumeri = document.getElementById("input-numeri");
 
 const numeri = generaArrayNumUnici(5, 1, 20);
 
+// Array che contiene numeri indovinati
 const numeriIndovinati = [];
 
+// Array che contiene numeri aggiunti dall'utente
 const numeriAggiunti = [];
 
 let seconds = 30;
 
 let timer;
 
+// Al click del bottone gioca
 document.getElementById("gioca").addEventListener("click", gioca);
 
+// Al click del bottone riprova
 document.getElementById("riprova").addEventListener("click", riprova);
 
+// Numero casuale tra min e max
 function numCasuale(min, max) {
     return (Math.floor(Math.random() * ((max + 1) - min) + min));
 }
 
+// Genero array di n numeri casuali che non si ripetono
 function generaArrayNumUnici(n, numMin, numMax) {
     const array = [];
 
@@ -38,16 +44,19 @@ function generaArrayNumUnici(n, numMin, numMax) {
     return array;
 } 
 
+// Nascondo i numeri e faccio apparire l'input una volta che il timer arriva a 0 
 function funzioneNascondiNumeri() {
     document.getElementById("numeri").classList.add("hidden");
 
     document.getElementById("input").classList.add("visible");
 }
 
+// Faccio partire il timer
 function creaTimer() {
 
     seconds--;
 
+    // Se i secondi arrivano a 0 azzero il timer e lo faccio scomparire
     if (seconds === 0) {
         clearInterval(timer);
 
@@ -58,6 +67,7 @@ function creaTimer() {
 
 }
 
+// Funzione per far inserire i numeri all'utente
 function inserisciNumeri() {
 
     let int = parseInt(inputNumeri.value);
@@ -108,12 +118,14 @@ function inserisciNumeri() {
 
 }
 
+// Funzionec che ricarica la pagina
 function riprova() {
 
     window.location.reload(true);
 
 }
 
+// Funzione per far partire il gioco
 function gioca() {
     
     document.getElementById("gioca").classList.add("hidden");
