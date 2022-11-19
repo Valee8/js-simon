@@ -16,6 +16,10 @@ let seconds;
 
 let timer;
 
+document.getElementById("gioca").addEventListener("click", gioca);
+
+document.getElementById("riprova").addEventListener("click", riprova);
+
 function numCasuale(min, max) {
     return (Math.floor(Math.random() * ((max + 1) - min) + min));
 }
