@@ -6,7 +6,13 @@
 
 const inputNumeri = document.getElementById("input-numeri");
 
-const numeri = generaArrayNumUnici(5, 1, 20);
+const numeridaGenerare = 5;
+
+const minNumeri = 1;
+
+const maxNumeri = 20;
+
+const numeri = generaArrayNumUnici(numeridaGenerare, minNumeri, maxNumeri);
 
 // Array che contiene numeri indovinati
 const numeriIndovinati = [];
