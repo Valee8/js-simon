@@ -24,6 +24,8 @@ let seconds = 30;
 
 let timer;
 
+console.log("numeri: ", numeri);
+
 // Al click del bottone gioca
 document.getElementById("gioca").addEventListener("click", gioca);
 
@@ -78,29 +80,19 @@ function inserisciNumeri() {
 
     let int = parseInt(inputNumeri.value);
 
-    for (let i = 0; i < numeridaGenerare; i++) {
-        
-        if (numeri.includes(int)) {
-                    
-            numeriIndovinati.push(int);
-                        
-            const index = numeri.indexOf(int);
-        
-            numeri.splice(index, 1);
+    inputNumeri.value = "";
 
-            console.log("numeri: ", numeri);
-
-            console.log("indovinati: ", numeriIndovinati);
-
-        }
-
-        inputNumeri.value = "";
-        
-    }
-    
     numeriAggiunti.push(int);
 
+    if (numeri.includes(int)) {
+                    
+        numeriIndovinati.push(int);
+
+    }
+
     console.log("numeri aggiunti: ", numeriAggiunti);
+
+    console.log("indovinati: ", numeriIndovinati);
 
     if (numeriAggiunti.length === numeridaGenerare) {
 
