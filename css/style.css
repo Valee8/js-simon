@@ -1,7 +1,11 @@
-#input, #secondi.hidden, #numeri.hidden {
+.hidden, #input, #riprova {
     display: none;
 }
 
-#input.visible {
+.visible, #input.visible, #riprova.visible {
     display: block;
+}
+
+#input-numeri {
+    width: 250px;
 }
