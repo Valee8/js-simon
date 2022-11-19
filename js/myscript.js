@@ -8,15 +8,13 @@ const inputNumeri = document.getElementById("input-numeri");
 
 const numeri = generaArrayNumUnici(5, 1, 20);
 
-const indovinati = [];
+const numeriIndovinati = [];
 
 const numeriAggiunti = [];
 
-let timer;
-
 let seconds;
 
-setTimeout(myFunction, 5000);
+let timer;
 
 function numCasuale(min, max) {
     return (Math.floor(Math.random() * ((max + 1) - min) + min));
@@ -36,8 +34,93 @@ function generaArrayNumUnici(n, numMin, numMax) {
     return array;
 } 
 
-function myFunction() {
+function funzioneNascondiNumeri() {
     document.getElementById("numeri").classList.add("hidden");
 
     document.getElementById("input").classList.add("visible");
+}
+
+function creaTimer() {
+
+    seconds--;
+
+    if (seconds === 0) {
+        clearInterval(timer);
+
+        document.getElementById("secondi").classList.add("hidden");
+    }
+
+    document.getElementById("secondi").innerHTML = seconds;
+
+}
+
+function inserisciNumeri() {
+
+    let int = parseInt(inputNumeri.value);
+
+    for (let i = 0; i < numeridaGenerare; i++) {
+        
+        if (numeri.includes(int)) {
+                    
+            numeriIndovinati.push(int);
+                        
+            const index = numeri.indexOf(int);
+        
+            numeri.splice(index, 1);
+
+            console.log("numeri: ", numeri);
+
+            console.log("indovinati: ", numeriIndovinati);
+
+        }
+
+        inputNumeri.value = "";
+        
+    }
+    
+    numeriAggiunti.push(int);
+
+    console.log("numeri aggiunti: ", numeriAggiunti);
+
+    if (numeriAggiunti.length === numeridaGenerare) {
+
+        document.getElementById("input").classList.remove("visible");
+
+        document.getElementById("riprova").classList.add("visible");
+
+        if (numeriIndovinati.length != 0) {
+
+            document.getElementById("risultato").append(`Hai indovinato ${numeriIndovinati.length} numeri, i numeri indovinati sono:`);
+                
+            for (let i = 0; i < numeriIndovinati.length; i++) {
+                document.getElementById("risultato").append(` ${numeriIndovinati[i]}`);
+            }
+        }
+
+        else {
+            document.getElementById("risultato").append("Non hai indovinato nessun numero");
+        }
+    }
+
+}
+
+function riprova() {
+
+    window.location.reload(true);
+
+}
+
+function gioca() {
+    
+    document.getElementById("gioca").classList.add("hidden");
+
+    setTimeout(funzioneNascondiNumeri, 30000);
+
+    timer = setInterval(creaTimer, 1000);
+
+    for (let i = 0; i < numeri.length; i++) {
+        document.getElementById("numeri").innerHTML += `${numeri[i]} `;
+    }
+
+    document.getElementById("invia").addEventListener("click", inserisciNumeri);
 }
