@@ -12,7 +12,7 @@ const numeriIndovinati = [];
 
 const numeriAggiunti = [];
 
-let seconds;
+let seconds = 30;
 
 let timer;
 
