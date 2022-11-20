@@ -24,8 +24,6 @@ let seconds = 30;
 
 let timer;
 
-console.log("numeri: ", numeri);
-
 // Al click del bottone gioca
 document.getElementById("gioca").addEventListener("click", gioca);
 
@@ -54,7 +52,8 @@ function generaArrayNumUnici(n, numMin, numMax) {
 
 // Nascondo i numeri e faccio apparire l'input una volta che il timer arriva a 0 
 function funzioneNascondiNumeri() {
-    document.getElementById("numeri").classList.add("hidden");
+
+    document.getElementById("numeri").classList.remove("visible");
 
     document.getElementById("input").classList.add("visible");
 }
@@ -71,7 +70,7 @@ function creaTimer() {
         document.getElementById("secondi").classList.add("hidden");
     }
 
-    document.getElementById("secondi").innerHTML = seconds;
+    document.getElementById("secondi").innerHTML = `Timer: <span>${seconds}</span>`;
 
 }
 
@@ -82,13 +81,17 @@ function inserisciNumeri() {
 
     inputNumeri.value = "";
 
-    numeriAggiunti.push(int);
-
     if (numeri.includes(int)) {
                     
         numeriIndovinati.push(int);
 
+        const index = numeri.indexOf(int);
+
+        numeri.splice(index, 1);
+
     }
+
+    numeriAggiunti.push(int);
 
     console.log("numeri aggiunti: ", numeriAggiunti);
 
@@ -96,45 +99,58 @@ function inserisciNumeri() {
 
     if (numeriAggiunti.length === numeridaGenerare) {
 
+        // Nascondo input 
         document.getElementById("input").classList.remove("visible");
 
+        // Faccio apparire bottone riprova
         document.getElementById("riprova").classList.add("visible");
+
+        // Faccio apparire il numero di indovinati
+        document.getElementById("quanti-indovinati").classList.add("visible");
 
         if (numeriIndovinati.length != 0) {
 
-            document.getElementById("risultato").append(`Hai indovinato ${numeriIndovinati.length} numeri, i numeri indovinati sono:`);
+            // Faccio apparire quali numeri ha indovinato
+            document.getElementById("quali-indovinati").classList.add("visible");
+
+            document.getElementById("quanti-indovinati").innerHTML = `Hai indovinato ${numeriIndovinati.length} numeri, i numeri indovinati sono:`;
                 
-            for (let i = 0; i < numeriIndovinati.length; i++) {
-                document.getElementById("risultato").append(` ${numeriIndovinati[i]}`);
-            }
+            document.getElementById("quali-indovinati").innerHTML += ` ${numeriIndovinati}`;
+        
         }
 
         else {
-            document.getElementById("risultato").append("Non hai indovinato nessun numero");
+            document.getElementById("quanti-indovinati").append("Non hai indovinato nessun numero");
         }
     }
 
 }
 
-// Funzionec che ricarica la pagina
+// Funzione che ricarica la pagina
 function riprova() {
 
-    window.location.reload(true);
+    window.location.reload();
 
 }
 
 // Funzione per far partire il gioco
 function gioca() {
     
+    // Nascondo il pulsante gioca
     document.getElementById("gioca").classList.add("hidden");
+
+    // Mostro i numeri
+    document.getElementById("numeri").classList.add("visible");
 
     setTimeout(funzioneNascondiNumeri, 30000);
 
     timer = setInterval(creaTimer, 1000);
 
     for (let i = 0; i < numeri.length; i++) {
-        document.getElementById("numeri").innerHTML += `${numeri[i]} `;
+        document.getElementById("numeri").innerHTML += `<li class="numero">${numeri[i]}</li>`;
     }
+
+    console.log("numeri: ", numeri);
 
     document.getElementById("invia").addEventListener("click", inserisciNumeri);
 }
