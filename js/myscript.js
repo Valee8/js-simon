@@ -81,13 +81,9 @@ function inserisciNumeri() {
 
     inputNumeri.value = "";
 
-    if (numeri.includes(int)) {
+    if (numeri.includes(int) && !numeriIndovinati.includes(int)) {
                     
         numeriIndovinati.push(int);
-
-        const index = numeri.indexOf(int);
-
-        numeri.splice(index, 1);
 
     }
 
