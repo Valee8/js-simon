@@ -1,11 +1,111 @@
-.hidden, #input, #riprova {
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.hidden {
     display: none;
 }
 
-.visible, #input.visible, #riprova.visible {
+.visible {
     display: block;
+}
+
+#numeri, #input, #riprova, #quali-indovinati, #quanti-indovinati {
+    display: none;
+}
+
+#numeri.visible, #input.visible, #quali-indovinati.visible, #quanti-indovinati.visible {
+    display: block;
+}
+
+#riprova.visible {
+    display: inline-block;
+}
+
+/* Container */
+#container {
+    background-color: #0CD6A1;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 60px 0;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* Bottoni gioca e riprova */
+#gioca, #riprova {
+    background-color: #0f6a89;
+    border: 1px solid #083B4C;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#gioca:hover, #riprova:hover {
+    background-color: #0c546c;
+}
+
+/* Numeri */
+#numeri {
+    list-style-type: none;
+}
+
+.numero {
+    display: inline-block;
+    background-color: #FFD166;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: #000;
+    font-size: 2rem;
+}
+
+/* Secondi - timer */
+#secondi {
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+#secondi span {
+    background-color: #F0466F;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+/* Input e bottone invia */
+#input input, #input button {
+    background-color: #E9E9ED;
+    border-radius: 3px;
+    border: 1px solid #A5A5B0;
+    font-size: 0.9rem;
+    padding: 4px;
 }
 
 #input-numeri {
     width: 250px;
+}
+
+#input button {
+    cursor: pointer;
+}
+
+/* Numeri indovinati */
+#quanti-indovinati, #quali-indovinati {
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-top: 20px;
 }
