@@ -4,6 +4,10 @@
 // Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente.
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
+const quantiIndovinati = document.getElementById("quanti-indovinati");
+
+const qualiIndovinati = document.getElementById("quali-indovinati");
+
 const inputNumeri = document.getElementById("input-numeri");
 
 const numeridaGenerare = 5;
@@ -20,7 +24,7 @@ const numeriIndovinati = [];
 // Array che contiene numeri aggiunti dall'utente
 const numeriAggiunti = [];
 
-let seconds = 30;
+let seconds = 5;
 
 let timer;
 
@@ -102,21 +106,21 @@ function inserisciNumeri() {
         document.getElementById("riprova").classList.add("visible");
 
         // Faccio apparire il numero di indovinati
-        document.getElementById("quanti-indovinati").classList.add("visible");
+        quantiIndovinati.classList.add("visible");
 
         if (numeriIndovinati.length != 0) {
 
             // Faccio apparire quali numeri ha indovinato
-            document.getElementById("quali-indovinati").classList.add("visible");
+            qualiIndovinati.classList.add("visible");
 
-            document.getElementById("quanti-indovinati").innerHTML = `Hai indovinato ${numeriIndovinati.length} numeri, i numeri indovinati sono:`;
+            quantiIndovinati.innerHTML = `Hai indovinato ${numeriIndovinati.length} numeri, i numeri indovinati sono:`;
                 
-            document.getElementById("quali-indovinati").innerHTML += ` ${numeriIndovinati}`;
+            qualiIndovinati.innerHTML += ` ${numeriIndovinati}`;
         
         }
 
         else {
-            document.getElementById("quanti-indovinati").append("Non hai indovinato nessun numero");
+            quantiIndovinati.innerHTML = "Non hai indovinato nessun numero";
         }
     }
 
@@ -138,7 +142,7 @@ function gioca() {
     // Mostro i numeri
     document.getElementById("numeri").classList.add("visible");
 
-    setTimeout(funzioneNascondiNumeri, 30000);
+    setTimeout(funzioneNascondiNumeri, 5000);
 
     timer = setInterval(creaTimer, 1000);
 
