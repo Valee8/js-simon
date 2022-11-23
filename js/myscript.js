@@ -81,6 +81,9 @@ function inserisciNumeri() {
         numeriIndovinati.push(int);
 
     }
+    else if (numeriIndovinati.includes(int)) {
+        alert("Numero già inserito");
+    }
 
     numeriAggiunti.push(int);
 
