@@ -24,7 +24,7 @@ const numeriIndovinati = [];
 // Array che contiene numeri aggiunti dall'utente
 const numeriAggiunti = [];
 
-let seconds = 5;
+let seconds = 30;
 
 let timer;
 
@@ -136,7 +136,7 @@ function gioca() {
     // Mostro i numeri
     document.getElementById("numeri").classList.add("visible");
 
-    setTimeout(funzioneNascondiNumeri, 5000);
+    setTimeout(funzioneNascondiNumeri, 30000);
 
     // Timer
     timer = setInterval(function creaTimer() {
