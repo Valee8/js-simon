@@ -28,6 +28,13 @@ let seconds = 5;
 
 let timer;
 
+// Genero i numeri anche se non si vedono
+for (let i = 0; i < numeri.length; i++) {
+    document.getElementById("numeri").innerHTML += `<li class="numero">${numeri[i]}</li>`;
+}
+
+console.log("numeri: ", numeri);
+
 // Al click del bottone gioca
 document.getElementById("gioca").addEventListener("click", gioca);
 
