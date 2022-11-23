@@ -62,22 +62,6 @@ function funzioneNascondiNumeri() {
     document.getElementById("input").classList.add("visible");
 }
 
-// Faccio partire il timer
-function creaTimer() {
-
-    seconds--;
-
-    // Se i secondi arrivano a 0 azzero il timer e lo faccio scomparire
-    if (seconds === 0) {
-        clearInterval(timer);
-
-        document.getElementById("secondi").classList.add("hidden");
-    }
-
-    document.getElementById("secondi").innerHTML = `Timer: <span>${seconds}</span>`;
-
-}
-
 // Funzione per far inserire i numeri all'utente
 function inserisciNumeri() {
 
@@ -144,13 +128,19 @@ function gioca() {
 
     setTimeout(funzioneNascondiNumeri, 5000);
 
-    timer = setInterval(creaTimer, 1000);
+    // Timer
+    timer = setInterval(function creaTimer() {
+        seconds--;
 
-    for (let i = 0; i < numeri.length; i++) {
-        document.getElementById("numeri").innerHTML += `<li class="numero">${numeri[i]}</li>`;
+    // Se i secondi arrivano a 0 azzero il timer e lo faccio scomparire
+    if (seconds === 0) {
+        clearInterval(timer);
+
+        document.getElementById("secondi").classList.add("hidden");
     }
 
-    console.log("numeri: ", numeri);
+    document.getElementById("secondi").innerHTML = `Timer: <span>${seconds}</span>`;
+    }, 1000);
 
     document.getElementById("invia").addEventListener("click", inserisciNumeri);
 }
